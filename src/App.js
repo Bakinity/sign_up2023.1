@@ -1,9 +1,11 @@
 import { Fragment } from "react";
+import Login from "./components/Login";
+import Signup from "./components/SignUp";
 
 function App() {
   return (
     <Fragment>
-      <p>hi</p>
+      <Login />
     </Fragment>
   );
 }
