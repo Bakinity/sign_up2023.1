@@ -1,6 +1,4 @@
 body {
-  height: 72.5vh;
-  background: linear-gradient(rgb(187, 34, 34), rgb(221, 125, 125)) no-repeat;
+  background-color:rgb(255, 255, 255);
   margin: 0;
-  padding: 0;
 }

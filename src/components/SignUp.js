@@ -1,269 +1,152 @@
-// import React from "react";
+import React from "react";
 
-// import {
-//   AutoComplete,
-//   Button,
-//   Cascader,
-//   Checkbox,
-//   Col,
-//   Form,
-//   Input,
-//   InputNumber,
-//   Row,
-//   Select,
-// } from "antd";
+import user from "../assets/user.png";
 
-// const Signup = () => {
-//   const { Option } = Select;
+import { Select, Form, Input, Checkbox, Button } from "antd";
 
-//   const residences = [
-//     {
-//       value: "zhejiang",
-//       label: "Zhejiang",
-//       children: [
-//         {
-//           value: "hangzhou",
-//           label: "Hangzhou",
-//           children: [
-//             {
-//               value: "xihu",
-//               label: "West Lake",
-//             },
-//           ],
-//         },
-//       ],
-//     },
-//     {
-//       value: "jiangsu",
-//       label: "Jiangsu",
-//       children: [
-//         {
-//           value: "nanjing",
-//           label: "Nanjing",
-//           children: [
-//             {
-//               value: "zhonghuamen",
-//               label: "Zhong Hua Men",
-//             },
-//           ],
-//         },
-//       ],
-//     },
-//   ];
+const Signup = () => {
+  return (
+    <div
+      style={{
+        margin: "8%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Form
+        layout='vertical'
+        style={{
+          width: "350px",
+        }}
+      >
+        <Form.Item>
+          <img
+            src={user}
+            alt='user'
+            style={{
+              marginLeft: "35%",
+              width: "100px",
+            }}
+          ></img>
+        </Form.Item>
 
-//   const formItemLayout = {
-//     labelCol: {
-//       xs: { span: 24 },
-//       sm: { span: 8 },
-//     },
-//     wrapperCol: {
-//       xs: { span: 24 },
-//       sm: { span: 16 },
-//     },
-//   };
-//   const tailFormItemLayout = {
-//     wrapperCol: {
-//       xs: {
-//         span: 24,
-//         offset: 0,
-//       },
-//       sm: {
-//         span: 16,
-//         offset: 8,
-//       },
-//     },
-//   };
+        <Form.Item
+          label='Name Lastname'
+          name='username'
+          style={{ marginTop: "20px", marginBottom: "0" }}
+        >
+          <Input
+            bordered={false}
+            placeholder='Aghayev Ilqar'
+            type='text'
+            style={{ borderRadius: "0", borderBottom: "1px solid grey" }}
+          ></Input>
+        </Form.Item>
 
-//   return (
-//     <Form
-//       {...formItemLayout}
-//       name='register'
-//       initialValues={{
-//         residence: ["zhejiang", "hangzhou", "xihu"],
-//         prefix: "86",
-//       }}
-//       scrollToFirstError
-//     >
-//       <Form.Item
-//         name='email'
-//         label='E-mail'
-//         rules={[
-//           {
-//             type: "email",
-//             message: "The input is not valid E-mail!",
-//           },
-//           {
-//             required: true,
-//             message: "Please input your E-mail!",
-//           },
-//         ]}
-//       >
-//         <Input />
-//       </Form.Item>
+        <Form.Item label='Email' name='email' style={{ marginBottom: "0" }}>
+          <Input
+            label='Email'
+            bordered={false}
+            placeholder='example@mail.com'
+            type='email'
+            style={{
+              borderRadius: "0",
+              borderBottom: "1px solid grey",
+            }}
+          ></Input>
+        </Form.Item>
 
-//       <Form.Item
-//         name='password'
-//         label='Password'
-//         rules={[
-//           {
-//             required: true,
-//             message: "Please input your password!",
-//           },
-//         ]}
-//         hasFeedback
-//       >
-//         <Input.Password />
-//       </Form.Item>
+        <Form.Item
+          label='Password'
+          name='Password'
+          style={{ marginBottom: "0" }}
+        >
+          <Input
+            bordered={false}
+            placeholder='Password'
+            type='password'
+            style={{ borderRadius: "0", borderBottom: "1px solid grey" }}
+          ></Input>
+        </Form.Item>
 
-//       <Form.Item
-//         name='confirm'
-//         label='Confirm Password'
-//         dependencies={["password"]}
-//         hasFeedback
-//         rules={[
-//           {
-//             required: true,
-//             message: "Please confirm your password!",
-//           },
-//           ({ getFieldValue }) => ({
-//             validator(_, value) {
-//               if (!value || getFieldValue("password") === value) {
-//                 return Promise.resolve();
-//               }
-//               return Promise.reject(
-//                 new Error("The two passwords that you entered do not match!")
-//               );
-//             },
-//           }),
-//         ]}
-//       >
-//         <Input.Password />
-//       </Form.Item>
+        <Form.Item label='City' style={{ marginBottom: "0" }}>
+          <Select
+            bordered={false}
+            placeholder='Select the city where you live'
+            style={{
+              width: "100%",
+              borderRadius: "0",
+              borderBottom: "1px solid grey",
+            }}
+            options={[
+              {
+                options: [
+                  { label: "Baki", value: "Baki" },
+                  { label: "Sumqayit", value: "Sumqayit" },
+                ],
+              },
+            ]}
+          />
+        </Form.Item>
 
-//       <Form.Item
-//         name='nickname'
-//         label='Nickname'
-//         tooltip='What do you want others to call you?'
-//         rules={[
-//           {
-//             required: true,
-//             message: "Please input your nickname!",
-//             whitespace: true,
-//           },
-//         ]}
-//       >
-//         <Input />
-//       </Form.Item>
+        <Form.Item label='University' style={{ marginBottom: "10px" }}>
+          <Select
+            bordered={false}
+            placeholder='Select your university'
+            style={{
+              width: "100%",
+              borderRadius: "0",
+              borderBottom: "1px solid grey",
+            }}
+            options={[
+              {
+                options: [
+                  { label: "BDU", value: "BDU" },
+                  { label: "ADNSU", value: "ADNSU" },
+                ],
+              },
+            ]}
+          />
+        </Form.Item>
 
-//       <Form.Item
-//         name='residence'
-//         label='Habitual Residence'
-//         rules={[
-//           {
-//             type: "array",
-//             required: true,
-//             message: "Please select your habitual residence!",
-//           },
-//         ]}
-//       >
-//         <Cascader options={residences} />
-//       </Form.Item>
+        <Form.Item style={{ textAlign: "center", marginBottom: "10px" }}>
+          <Checkbox style={{ borderRadius: "0", borderColor: "black" }}>
+            I'll accept all terms of use
+          </Checkbox>
+        </Form.Item>
 
-//       <Form.Item
-//         name='phone'
-//         label='Phone Number'
-//         rules={[{ required: true, message: "Please input your phone number!" }]}
-//       >
-//         <Input addonBefore style={{ width: "100%" }} />
-//       </Form.Item>
+        <Form.Item
+          style={{
+            textAlign: "center",
+            marginBottom: "10px",
+          }}
+        >
+          <Button
+            type='primary'
+            htmlType='submit'
+            className='login-form-button'
+            style={{
+              fontWeight: "500",
+              width: "50%",
+              background: "#e66465",
+              color: "white",
+              borderRadius: "15px",
+            }}
+          >
+            Qeydiyyat
+          </Button>
 
-//       <Form.Item
-//         name='donation'
-//         label='Donation'
-//         rules={[{ required: true, message: "Please input donation amount!" }]}
-//       >
-//         <InputNumber addonAfter style={{ width: "100%" }} />
-//       </Form.Item>
+          <p>
+            Allready have an account?{" "}
+            <a href='*' style={{ textDecoration: "underline" }}>
+              Sign In
+            </a>
+          </p>
+        </Form.Item>
+      </Form>
+    </div>
+  );
+};
 
-//       <Form.Item
-//         name='website'
-//         label='Website'
-//         rules={[{ required: true, message: "Please input website!" }]}
-//       >
-//         <AutoComplete placeholder='website'>
-//           <Input />
-//         </AutoComplete>
-//       </Form.Item>
-
-//       <Form.Item
-//         name='intro'
-//         label='Intro'
-//         rules={[{ required: true, message: "Please input Intro" }]}
-//       >
-//         <Input.TextArea showCount maxLength={100} />
-//       </Form.Item>
-
-//       <Form.Item
-//         name='gender'
-//         label='Gender'
-//         rules={[{ required: true, message: "Please select gender!" }]}
-//       >
-//         <Select placeholder='select your gender'>
-//           <Option value='male'>Male</Option>
-//           <Option value='female'>Female</Option>
-//           <Option value='other'>Other</Option>
-//         </Select>
-//       </Form.Item>
-
-//       <Form.Item
-//         label='Captcha'
-//         extra='We must make sure that your are a human.'
-//       >
-//         <Row gutter={8}>
-//           <Col span={12}>
-//             <Form.Item
-//               name='captcha'
-//               noStyle
-//               rules={[
-//                 {
-//                   required: true,
-//                   message: "Please input the captcha you got!",
-//                 },
-//               ]}
-//             >
-//               <Input />
-//             </Form.Item>
-//           </Col>
-//           <Col span={12}>
-//             <Button>Get captcha</Button>
-//           </Col>
-//         </Row>
-//       </Form.Item>
-
-//       <Form.Item
-//         name='agreement'
-//         valuePropName='checked'
-//         rules={[
-//           {
-//             validator: (_, value) =>
-//               value
-//                 ? Promise.resolve()
-//                 : Promise.reject(new Error("Should accept agreement")),
-//           },
-//         ]}
-//         {...tailFormItemLayout}
-//       >
-//         <Checkbox>
-//           I have read the <a href='*'>agreement</a>
-//         </Checkbox>
-//       </Form.Item>
-//       <Form.Item {...tailFormItemLayout}>
-//         <Button type='primary' htmlType='submit'>
-//           Register
-//         </Button>
-//       </Form.Item>
-//     </Form>
-//   );
-// };
-
-// export default Signup;
+export default Signup;
